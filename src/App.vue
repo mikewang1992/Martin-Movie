@@ -1,32 +1,55 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
+    <MovieLoader/>
+    <NavBar/>
+    <div class="banner py-5">
+      <div class="banner-content container">
+        <h1>Movie Grid 3</h1>
+        <p>I'm breadcrumb</p>
+      </div>
+    </div> 
     <router-view/>
   </div>
 </template>
 
+<script>
+  import MovieLoader from '@/components/MovieLoader.vue'
+  import NavBar from '@/components/NavBar.vue'
+  export default {
+    components: {
+      MovieLoader,
+      NavBar
+    },
+  }
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.banner {
+  position: relative;
+  width: 100%;
+  background: url('assets/backbanner.jpg');
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
-nav {
-  padding: 30px;
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(102, 51, 153, 0.7), rgba(255, 51, 102, 0.7));
+  filter: blur(5px);
+  z-index: 1;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.banner-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
 }
 </style>
