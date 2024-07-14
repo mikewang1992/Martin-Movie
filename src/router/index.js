@@ -5,6 +5,8 @@ import MovieList from "@/components/MovieList.vue";
 Vue.use(Router);
 
 export default new Router({
+  mode: "history",
+  base: "/martin-movie/",
   routes: [
     {
       path: "/",
